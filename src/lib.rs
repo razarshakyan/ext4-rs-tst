@@ -558,13 +558,13 @@ impl Inode {
                     let expected = cursor.read_u32::<LittleEndian>()?;
                     let computed =
                         parse::ext4_style_crc32c_le(checksum_prefix, &cursor.into_inner()[0..read]);
-                    /*ensure!(
+                    ensure!(
                         expected == computed,
                         assumption_failed(format!(
                             "directory checksum mismatch: on-disk: {:08x}, computed: {:08x}",
                             expected, computed
                         ))
-                    );*/
+                    );
                 }
 
                 break;
